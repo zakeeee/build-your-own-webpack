@@ -1,0 +1,21 @@
+{
+  "name": "build-your-own-webpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm exec vitest run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/parser": "^7.18.8",
+    "@babel/traverse": "^7.18.8",
+    "tapable": "^2.2.1"
+  },
+  "devDependencies": {
+    "vitest": "^0.18.0"
+  }
+}
