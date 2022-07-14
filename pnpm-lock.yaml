@@ -5,6 +5,7 @@ specifiers:
   '@babel/parser': ^7.18.8
   '@babel/preset-env': ^7.18.6
   '@babel/traverse': ^7.18.8
+  prettier: ^2.7.1
   tapable: ^2.2.1
   vitest: ^0.18.0
 
@@ -16,6 +17,7 @@ dependencies:
   tapable: 2.2.1
 
 devDependencies:
+  prettier: 2.7.1
   vitest: 0.18.0
 
 packages:
@@ -1733,6 +1735,12 @@ packages:
       nanoid: 3.3.4
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /regenerate-unicode-properties/10.0.1:

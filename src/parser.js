@@ -30,15 +30,29 @@ function parse(fileName, config) {
   babelTraverse(ast, {
     CallExpression(nodePath) {
       if (nodePath.node.callee.name === 'require') {
-        const moduleFileName = path.resolve(dirPath, nodePath.node.arguments[0].value).replace(/\\/g, '/')
-        nodePath.node.arguments[0].value = moduleFileName
-        dependencies.push(moduleFileName)
+        let moduleName = nodePath.node.arguments[0].value
+        const isRelative = !path.isAbsolute(moduleName) && moduleName.startsWith('.')
+        if (isRelative) {
+          moduleName = path.resolve(dirPath, moduleName)
+        }
+        moduleName = moduleName.replace(/\\/g, '/')
+        nodePath.node.arguments[0].value = moduleName
+        if (isRelative) {
+          dependencies.push(moduleName)
+        }
       }
     },
     ImportDeclaration(nodePath) {
-      const moduleFileName = path.resolve(dirPath, nodePath.node.source.value).replace(/\\/g, '/')
-      nodePath.node.source.value = moduleFileName
-      dependencies.push(moduleFileName)
+      let moduleName = nodePath.node.source.value
+      const isRelative = !path.isAbsolute(moduleName) && moduleName.startsWith('.')
+      if (isRelative) {
+        moduleName = path.resolve(dirPath, moduleName)
+      }
+      moduleName = moduleName.replace(/\\/g, '/')
+      nodePath.node.source.value = moduleName
+      if (isRelative) {
+        dependencies.push(moduleName)
+      }
     },
   })
 
